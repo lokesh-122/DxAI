@@ -144,7 +144,3 @@ Reading and understanding medical reports is a daunting task for the average per
   <li>Hackathon mentors and reviewers 💙</li>
 </ul>
 
-<hr />
-
-<h2>📜 License</h2>
-<p>MIT License – feel free to fork, improve, and build on top of it!</p>
