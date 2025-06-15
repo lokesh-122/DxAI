@@ -153,13 +153,6 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=...
 
 <hr />
 
-<h2>📸 Screenshots</h2>
-<p>(Add images to <code>/public/screenshots</code> and link here)</p>
-<pre>
-<img src="public/screenshots/upload.png" alt="Upload Page" />
-<img src="public/screenshots/summary.png" alt="Result Summary" />
-</pre>
-
 <hr />
 
 <h2>🙌 Acknowledgements</h2>
