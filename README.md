@@ -99,25 +99,6 @@ Reading and understanding medical reports is a daunting task for the average per
   <li>Designed standardized messaging templates</li>
 </ul>
 
-<hr />
-
-<h2>🛠️ How to Run the Project Locally</h2>
-<pre>
-git clone https://github.com/your-username/dxai.git
-cd dxai
-npm install
-npm run dev
-</pre>
-
-<p>Create a <code>.env.local</code> file and add:</p>
-<pre>
-NEXT_PUBLIC_FIREBASE_API_KEY=...
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=...
-</pre>
-
-<hr />
-
 <h2>🚀 Future Roadmap</h2>
 <ul>
   <li>📱 Launch Android/iOS app</li>
