@@ -1,0 +1,776 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 143 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 143 100% 50%;
+    --radius: 0.75rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 143 100% 50%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 143 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-gradient-to-br from-green-50 to-blue-50 text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Ultra-fast scroll animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fade-in-up.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fade-in-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(15px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fade-in-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .fade-in.animate {
+    opacity: 1;
+  }
+  
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scale-in.animate {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Ultra-fast staggered animations */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .stagger-children.animate > *:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.02s;
+  }
+  
+  .stagger-children.animate > *:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.04s;
+  }
+  
+  .stagger-children.animate > *:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.06s;
+  }
+  
+  .stagger-children.animate > *:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.08s;
+  }
+  
+  .stagger-children.animate > *:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+  
+  .stagger-children.animate > *:nth-child(6) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.12s;
+  }
+
+  /* Ultra-fast interactive button styles */
+  .btn-fast {
+    transition: all 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    will-change: transform, box-shadow, background-color;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-fast::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.2s ease;
+    z-index: 1;
+  }
+  
+  .btn-fast:hover::before {
+    left: 100%;
+  }
+  
+  .btn-fast:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-fast:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.02s;
+  }
+  
+  /* Medical button styles with ultra-fast interactions */
+  .btn-medical {
+    @apply btn-fast bg-gradient-to-r from-green-600 to-blue-600 text-white font-medium;
+    box-shadow: 0 2px 8px rgba(52, 143, 80, 0.3);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  
+  .btn-medical::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #10b981, #3b82f6, #8b5cf6);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    z-index: -1;
+  }
+  
+  .btn-medical:hover {
+    @apply shadow-lg;
+    box-shadow: 
+      0 6px 20px rgba(52, 143, 80, 0.4),
+      0 0 15px rgba(52, 143, 80, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+    transform: translateY(-2px) scale(1.03);
+  }
+  
+  .btn-medical:hover::after {
+    opacity: 1;
+  }
+  
+  .btn-medical:active {
+    box-shadow: 0 2px 8px rgba(52, 143, 80, 0.5);
+    transform: translateY(-1px) scale(1.01);
+  }
+  
+  /* Ultra-fast outline button styles */
+  .btn-outline-fast {
+    @apply btn-fast border-2 border-slate-300 bg-white text-slate-700 font-medium;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .btn-outline-fast::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    z-index: -1;
+  }
+  
+  .btn-outline-fast:hover {
+    @apply border-green-400 text-white;
+    box-shadow: 
+      0 4px 12px rgba(34, 197, 94, 0.25),
+      0 0 10px rgba(34, 197, 94, 0.2);
+    transform: translateY(-1px) scale(1.02);
+  }
+  
+  .btn-outline-fast:hover::before {
+    opacity: 1;
+  }
+  
+  /* Ultra-fast ghost button styles */
+  .btn-ghost-fast {
+    @apply btn-fast bg-transparent text-slate-700 font-medium;
+    position: relative;
+  }
+  
+  .btn-ghost-fast::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    z-index: -1;
+  }
+  
+  .btn-ghost-fast:hover {
+    @apply text-green-700;
+    transform: translateY(-1px) scale(1.01);
+  }
+  
+  .btn-ghost-fast:hover::before {
+    opacity: 1;
+  }
+  
+  /* Ultra-fast icon button styles */
+  .btn-icon-fast {
+    @apply btn-fast w-10 h-10 rounded-full flex items-center justify-center;
+    position: relative;
+  }
+  
+  .btn-icon-fast::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    z-index: -1;
+  }
+  
+  .btn-icon-fast:hover {
+    transform: scale(1.1) rotate(3deg);
+  }
+  
+  .btn-icon-fast:hover::before {
+    opacity: 1;
+  }
+  
+  /* Ultra-fast interactive hover button */
+  .interactive-hover-button {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      #667eea 0%,
+      #764ba2 25%,
+      #f093fb 50%,
+      #f5576c 75%,
+      #4facfe 100%
+    );
+    background-size: 300% 300%;
+    animation: gradient-shift 2s ease infinite;
+    border: none;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+  }
+  
+  .interactive-hover-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+    transition: all 0.15s ease;
+    z-index: 1;
+  }
+  
+  .interactive-hover-button::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: inherit;
+    border-radius: inherit;
+    filter: blur(15px);
+    opacity: 0;
+    transition: all 0.08s ease;
+    z-index: -1;
+  }
+  
+  .interactive-hover-button:hover {
+    transform: translateY(-3px) scale(1.03) rotateX(3deg);
+    box-shadow: 
+      0 12px 25px rgba(0, 0, 0, 0.2),
+      0 0 20px rgba(102, 126, 234, 0.5),
+      0 0 40px rgba(245, 87, 108, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    animation-duration: 1s;
+  }
+  
+  .interactive-hover-button:hover::before {
+    left: 100%;
+    transition-duration: 0.2s;
+  }
+  
+  .interactive-hover-button:hover::after {
+    opacity: 0.8;
+    filter: blur(20px);
+  }
+  
+  .interactive-hover-button:active {
+    transform: translateY(-1px) scale(1.01) rotateX(1deg);
+    transition-duration: 0.02s;
+  }
+  
+  .interactive-hover-button .button-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: all 0.08s ease;
+  }
+  
+  .interactive-hover-button:hover .button-content {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transform: translateZ(5px);
+  }
+  
+  .interactive-hover-button .button-icon {
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .interactive-hover-button:hover .button-icon {
+    transform: scale(1.1) rotate(10deg) translateZ(3px);
+  }
+  
+  .interactive-hover-button .button-arrow {
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .interactive-hover-button:hover .button-arrow {
+    transform: translateX(4px) scale(1.1) translateZ(3px);
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 100% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+  }
+
+  .medical-card {
+    @apply bg-white/95 backdrop-blur-sm border border-green-200/60 shadow-lg hover:shadow-xl transition-all duration-100 rounded-xl;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .medical-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+    transition: left 0.2s ease;
+    z-index: 1;
+  }
+  
+  .medical-card:hover::before {
+    left: 100%;
+  }
+  
+  .medical-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(52, 143, 80, 0.15);
+  }
+  
+  .medical-gradient {
+    background: linear-gradient(135deg, #348f50 0%, #56b4d3 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .medical-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.1s ease;
+  }
+  
+  .medical-gradient:hover::before {
+    opacity: 1;
+  }
+  
+  .medical-shadow {
+    box-shadow: 0 1px 3px 0 rgba(52, 143, 80, 0.1), 0 1px 2px 0 rgba(52, 143, 80, 0.06);
+    transition: box-shadow 0.1s ease;
+  }
+  
+  .medical-shadow:hover {
+    box-shadow: 0 4px 12px rgba(52, 143, 80, 0.2);
+  }
+  
+  .medical-shadow-lg {
+    box-shadow: 0 4px 12px -3px rgba(52, 143, 80, 0.1), 0 4px 6px -2px rgba(52, 143, 80, 0.05);
+    transition: box-shadow 0.1s ease;
+  }
+  
+  .medical-shadow-lg:hover {
+    box-shadow: 0 10px 20px rgba(52, 143, 80, 0.2);
+  }
+  
+  .medical-text-gradient {
+    @apply bg-gradient-to-r from-green-600 via-blue-500 to-cyan-600 bg-clip-text text-transparent;
+    background-size: 200% 200%;
+    animation: gradient-text 2s ease infinite;
+  }
+  
+  @keyframes gradient-text {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .transition-medical {
+    transition: all 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .focus-medical:focus {
+    @apply ring-2 ring-green-500 ring-offset-2 outline-none;
+    transition: all 0.08s ease;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  }
+  
+  .glass-medical {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.1s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .glass-medical::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.2s ease;
+  }
+  
+  .glass-medical:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-medical:hover::before {
+    left: 100%;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.medical-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.medical-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.medical-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(52, 143, 80, 0.3);
+  border-radius: 2px;
+  transition: background 0.1s ease;
+}
+
+.medical-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 143, 80, 0.5);
+}
+
+/* Ultra-fast button performance optimizations */
+button, .btn, [role="button"] {
+  @apply btn-fast;
+  position: relative;
+}
+
+button:not(:disabled):hover, .btn:not(:disabled):hover, [role="button"]:not(:disabled):hover {
+  animation: button-pulse 0.3s ease-out;
+}
+
+@keyframes button-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Specific button type optimizations */
+button[data-variant="default"] {
+  @apply btn-medical;
+}
+
+button[data-variant="outline"] {
+  @apply btn-outline-fast;
+}
+
+button[data-variant="ghost"] {
+  @apply btn-ghost-fast;
+}
+
+/* Icon button optimizations */
+button[data-size="icon"] {
+  @apply btn-icon-fast;
+}
+
+/* Ultra-fast dropdown and menu item optimizations */
+[role="menuitem"], [role="option"] {
+  @apply transition-all duration-75 ease-out;
+  position: relative;
+}
+
+[role="menuitem"]::before, [role="option"]::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.1), transparent);
+  transition: width 0.1s ease;
+}
+
+[role="menuitem"]:hover, [role="option"]:hover {
+  transform: translateX(2px);
+}
+
+[role="menuitem"]:hover::before, [role="option"]:hover::before {
+  width: 100%;
+}
+
+/* Ultra-fast tab optimizations */
+[role="tab"] {
+  @apply transition-all duration-75 ease-out;
+  position: relative;
+}
+
+[role="tab"]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #34d399, #3b82f6);
+  transition: all 0.1s ease;
+  transform: translateX(-50%);
+}
+
+[role="tab"]:hover {
+  transform: translateY(-1px);
+}
+
+[role="tab"]:hover::after {
+  width: 100%;
+}
+
+/* Ultra-fast card hover optimizations */
+.medical-card:hover {
+  transform: translateY(-2px) scale(1.01) rotateX(1deg);
+  box-shadow: 
+    0 10px 20px rgba(52, 143, 80, 0.15),
+    0 0 15px rgba(52, 143, 80, 0.1);
+}
+
+/* Ultra-fast input focus optimizations */
+input:focus, textarea:focus, select:focus {
+  @apply transition-all duration-75 ease-out;
+  transform: scale(1.01);
+  box-shadow: 
+    0 0 0 3px rgba(34, 197, 94, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ultra-fast link optimizations */
+a {
+  @apply transition-all duration-75 ease-out;
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #34d399, #3b82f6);
+  transition: width 0.1s ease;
+}
+
+a:hover {
+  transform: translateY(-1px);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Ultra-fast mobile touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .btn-fast:hover {
+    transform: none;
+  }
+  
+  .btn-fast:active {
+    transform: scale(0.95);
+    animation: mobile-tap 0.1s ease-out;
+  }
+  
+  @keyframes mobile-tap {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+  
+  .interactive-hover-button:hover {
+    transform: none;
+  }
+  
+  .interactive-hover-button:active {
+    transform: scale(0.95);
+    animation: mobile-tap 0.1s ease-out;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .stagger-children > * {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .btn-fast:hover {
+    transform: none !important;
+  }
+  
+  .interactive-hover-button:hover {
+    transform: none !important;
+  }
+}
