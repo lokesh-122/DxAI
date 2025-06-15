@@ -53,13 +53,14 @@ export default function TeamPage() {
     };
   }, []);
 
-  const developers: Developer[] = [
+
+const developers: Developer[] = [
     {
       id: '1',
       name: 'J Lokesh Varma',
       role: 'Lead & Gen AI Engineer',
       bio: 'Passionate full-stack developer with expertise in React, Node.js, and AI integration. Led the development of DxAI\'s core architecture and user interface.',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: '/lokesh.png', // updated to local image
       social: {
         github: 'https://github.com/jlokeshvarma',
         linkedin: 'https://linkedin.com/in/jlokeshvarma',
@@ -77,7 +78,7 @@ export default function TeamPage() {
       name: 'K Manosree',
       role: 'Project Manager & Data Scientist',
       bio: 'Experienced project manager and data scientist specializing in healthcare analytics and team coordination. Ensures project delivery while extracting valuable insights from medical data.',
-      image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: '/manosree.png', // updated to local image
       social: {
         github: 'https://github.com/kmanosree',
         linkedin: 'https://linkedin.com/in/kmanosree',
@@ -95,7 +96,7 @@ export default function TeamPage() {
       name: 'K Kiran',
       role: 'Backend and Gen AI Engineer',
       bio: 'Backend specialist with strong expertise in database design, API development, and generative AI systems. Focused on building scalable and intelligent backend solutions.',
-      image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: '/kiran.jpg', // updated to local image
       social: {
         github: 'https://github.com/kkiran',
         linkedin: 'https://linkedin.com/in/kkiran',
@@ -113,7 +114,7 @@ export default function TeamPage() {
       name: 'R Saritha',
       role: 'Frontend Developer & UI/UX Designer',
       bio: 'Creative frontend developer and designer focused on creating intuitive user experiences. Specialized in modern web technologies and accessibility.',
-      image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: '/saritha.jpg', // updated to local image
       social: {
         github: 'https://github.com/rsaritha',
         linkedin: 'https://linkedin.com/in/rsaritha',
@@ -127,6 +128,7 @@ export default function TeamPage() {
       ]
     }
   ];
+
 
   const teamStats = [
     { icon: Users, label: 'Team Members', value: '4', color: 'text-green-600' },
